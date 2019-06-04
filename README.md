@@ -146,3 +146,52 @@ testinfo | true | Json | 6.现场测试
 summary | true | Json | 7.总结
 signature | true | Json | 8.签名
 
+# Json对照表
+
+模型：["title": item.title, "content": item.content, "check": item.check, "pictures": item.pictures, "content2": item.content2, "style": item.style]
+
+说明：
+
+### style = 3 判断Cell
+
+有用的字段：
+check：true ✅，false ❌
+title：标题
+
+### style = 6 输入Cell
+
+有用的字段：
+title：标题
+content：占位文字
+content2: 实际内容
+
+### style = 8 图片Cell
+
+有用的字段：
+title：标题
+pictures：图片数组
+
+### style = 1 点击弹出选择框Cell（答案保存在本地）
+
+有用的字段：
+title：标题
+content：选择的内容（默认为：请选择）
+
+### style = 10 输入区域Cell （TextArea）
+
+有用的字段：
+title：占位文字
+content：实际内容
+
+### style = 12 随机备件页添加的Cell
+
+有用的字段：
+title：备件名称
+content：备件型号
+content2:  数量
+
+### style = 14 展示时间的Cell
+
+有用的字段：
+title：标题
+content：内容（时间）
