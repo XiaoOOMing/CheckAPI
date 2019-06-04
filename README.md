@@ -138,21 +138,11 @@ uid | true | Int | 用户ID
 type | true | Int | 0草稿 1报告
 state | true | Int | 0正常报告 1已复验 2旧报告 3待复验
 basicinfo | true | Json | 1.基本信息
-basicimg | true | Json | 1.全景图片
 facadeinfo | true | Json | 2.外观检查
-facadeimg | true | Json | 2.外观检查图片
 randominfo | true | Json | 3.随机资料
-randodesc | true | Json | 3.随机资料描述
 technologyinfo | true | Json | 4.技术要求
-technologyimg | true | Json | 4.技术要求图片
 equipmentinfo | true | Json | 5.随机备件
-equipmentimg | true | Json | 5.随机备件图片
 testinfo | true | Json | 6.现场测试
-testresult | true | Json | 6.现场测试结果
-testimg | true | Json | 6.现场测试图片
 summary | true | Json | 7.总结
-filejzc | true | Json | 7.件重尺
-filezxd | true | Json | 7.装箱单
-fileother | true | Json | 7.文件
 signature | true | Json | 8.签名
 
