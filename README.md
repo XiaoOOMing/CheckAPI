@@ -67,11 +67,12 @@ pro_id | false | Int | 项目ID。如果填写则查询单个项目
 名称 | 必填 | 类型 | 说明
 --- | --- | --- | ---
 pro_id | true | Int | 项目ID
+ct_id | false | Int | 指定合同ID
 
 ### 返回值
 
 ```
-// 存在满足条件的合同
+// 合同列表
 
 [
 	{
@@ -101,5 +102,19 @@ pro_id | true | Int | 项目ID
 // 不存在合同
 
 []
+
+// 指定合同
+
+{
+	"pro_id”:"1",
+	"ct_id”:"1",
+	"supplier_id”:"1",
+	"number”:"1",
+	"num_attr”:"1",
+	"buytype":"0",
+	"ct_name":"刮刀离心机备件采购",
+	"supplier":"江苏械制造公司",
+	"ct_number":"MKCP18087-2"
+}
 
 ```
