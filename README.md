@@ -152,6 +152,14 @@ signature | true | Json | 8.签名
 
 说明：
 
+### style = 2 基本信息中锁定的Cell
+
+有用的字段：
+
+title:标题
+
+content：内容
+
 ### style = 3 判断Cell
 
 有用的字段：
