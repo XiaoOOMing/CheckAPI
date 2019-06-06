@@ -134,6 +134,7 @@ ct_id | false | Int | 指定合同ID
 
 名称 | 必填 | 类型 | 说明
 --- | --- | --- | ---
+old_rep_id | false | Int | 项目ID（需要设为旧报告的ID）
 pro_id | true | Int | 项目ID
 ct_id | true | Int | 指定合同ID
 title | true | String | 报告标题
