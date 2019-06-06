@@ -1,6 +1,7 @@
 - [OA项目列表](#OA项目列表)
 - [OA合同列表](#OA合同列表)
 - [创建报告](#创建报告)
+- [上传装箱资料](#上传装箱资料)
 
 # OA项目列表
 
@@ -219,3 +220,16 @@ content2:  数量
 title：标题
 
 content：内容（时间）
+
+# 上传装箱资料
+
+- 接口地址：http://localhost/api/check/uploadJJCPictures
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/uploadJJCPictures?rep_id=1&type=jjc&pictures=["picture1.jpg","picture2.jpg"]
+
+名称 | 必填 | 类型 | 说明
+--- | --- | --- | ---
+rep_id | true | Int | 报告ID
+type | true | String | jjc => 件重尺 zxd => 装箱单 other => 其他资料
+pictures | true | String | 图片Json => ["picture1.jpg", "picture2.jpg"]
