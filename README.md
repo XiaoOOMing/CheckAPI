@@ -2,6 +2,7 @@
 - [OA合同列表](#OA合同列表)
 - [创建报告](#创建报告)
 - [上传装箱资料](#上传装箱资料)
+- [发送评论](#发送评论)
 
 # OA项目列表
 
@@ -233,3 +234,16 @@ content：内容（时间）
 rep_id | true | Int | 报告ID
 type | true | String | jjc => 件重尺 zxd => 装箱单 other => 其他资料
 pictures | true | String | 图片Json => ["picture1.jpg", "picture2.jpg"]
+
+# 发送评论
+
+- 接口地址：http://localhost/api/check/comment
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/comment?rep_id=1&comment=How are you?&cuid=1
+
+名称 | 必填 | 类型 | 说明
+--- | --- | --- | ---
+rep_id | true | Int | 报告ID
+comment | true | String | 评论内容
+cuid | true | Int | 用户ID
