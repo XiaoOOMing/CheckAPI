@@ -1,6 +1,7 @@
 - [OA项目列表](#OA项目列表)
 - [OA合同列表](#OA合同列表)
 - [创建报告](#创建报告)
+- [报告详情](#报告详情)
 - [上传装箱资料](#上传装箱资料)
 - [发送评论](#发送评论)
 
@@ -221,6 +222,16 @@ content2:  数量
 title：标题
 
 content：内容（时间）
+
+# 报告详情
+
+- 接口地址：http://localhost/api/check/getReportDetail
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/getReportDetail?rep_id=1
+
+返回Json格式信息
+
 
 # 上传装箱资料
 
