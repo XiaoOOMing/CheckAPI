@@ -1,9 +1,35 @@
+- [上传](#上传)
 - [OA项目列表](#OA项目列表)
 - [OA合同列表](#OA合同列表)
 - [创建报告](#创建报告)
+- [项目列表](#项目列表)
+- [合同列表](#合同列表)
+- [报告列表](#报告列表)
+- [获取基本信息](#获取基本信息)
 - [报告详情](#报告详情)
 - [上传装箱资料](#上传装箱资料)
 - [发送评论](#发送评论)
+- [创建草稿箱](#创建草稿箱)
+- [待复验合同](#待复验合同)
+- [搜索报告](#搜索报告)
+- [我的报告](#我的报告)
+
+# 上传
+
+- 接口地址：http://localhost/api/check/upload
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/upload
+
+### 返回值
+
+```
+{
+    "result": "success",
+    "filename": ["1.jpg", "2.jpg"],
+}
+```
+
 
 # OA项目列表
 
@@ -134,6 +160,7 @@ ct_id | false | Int | 指定合同ID
 
 名称 | 必填 | 类型 | 说明
 --- | --- | --- | ---
+draft_id | false | Int | 草稿箱ID（需要删除的草稿箱ID）
 old_rep_id | false | Int | 项目ID（需要设为旧报告的ID）
 pro_id | true | Int | 项目ID
 ct_id | true | Int | 指定合同ID
@@ -224,6 +251,146 @@ title：标题
 
 content：内容（时间）
 
+# 项目列表
+
+- 接口地址：http://localhost/api/check/getProjects
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/getProjects
+
+### 返回值
+
+```
+[
+    {
+        "pro_id":"1",
+        "pro_name":"俄罗斯Amylco刮刀备件",
+        "pro_number":"MKCE18087",
+        "pro_total":"2",
+        "pro_type":"0"
+    },
+    {
+        "pro_id":"2",
+        "pro_name":"伊朗项目泵机封",
+        "pro_number":"MKCE19085",
+        "pro_total":"3",
+        "pro_type":"0"
+    }
+]
+```
+
+# 合同列表
+
+- 接口地址：http://localhost/api/check/getContracts
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/getContracts?pro_id=1
+
+名称 | 必填 | 类型 | 说明
+--- | --- | --- | ---
+pro_id | true | Int | 项目ID
+
+### 返回值
+
+```
+[
+    {
+        "ct_id":"1",
+        "pro_id":"1",
+        "ct_name":"刮刀离心机备件采购",
+        "ct_number":"MKCP18087-2",
+        "ct_total":"2",
+        "ct_review":"0"
+    },
+    {
+        "ct_id":"2",
+        "pro_id":"2",
+        "ct_name":"刮刀离心机备件采购",
+        "ct_number":"MKCP18087-2",
+        "ct_total":"2",
+        "ct_review":"0"
+    }
+]
+```
+
+# 报告列表
+
+- 接口地址：http://localhost/api/check/getReport
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/getReport?pro_id=1&ct_id=1&recheck=0
+
+名称 | 必填 | 类型 | 说明
+--- | --- | --- | ---
+pro_id | true | Int | 项目ID
+ct_id | true | Int | 合同ID
+recheck | false | Int | 0所有报告；1待复验。默认为0。
+
+### 返回值
+
+```
+// 所有报告
+[
+    {
+        "id":"1",
+        "pro_id":"1",
+        "ct_id":"1",
+        "supplier_id":"1",
+        "project":"俄罗斯Amylco刮刀备件",
+        "contract":"刮刀离心机备件采购",
+        "supplier":"江苏赛德力制药机械制造有限公司",
+        "title":"待复验项目",
+        "cuser":"孟祥燕",
+        "cuid":"1",
+        "ctime":"2019年06月12日",
+        "type":"1",
+        "state":"0"
+    }
+]
+
+// 待复验报告
+[
+    {
+        "id":"1",
+        "pro_id":"1",
+        "ct_id":"1",
+        "supplier_id":"1",
+        "project":"伊朗项目泵机封",
+        "contract":"离心泵机械密封采购",
+        "supplier":"温州市康而达实业有限公司",
+        "title":"hello world",
+        "cuser":"孟祥燕",
+        "cuid":"1",
+        "ctime":"2019年06月17日",
+        "type":"1",
+        "state":"3"
+    }
+]
+```
+
+
+# 获取基本信息
+
+- 接口地址：http://localhost/api/check/getBasicInfo
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/getBasicInfo?pro_id=1&ct_id=1
+
+名称 | 必填 | 类型 | 说明
+--- | --- | --- | ---
+pro_id | true | Int | 项目ID
+ct_id | true | Int | 合同ID
+
+### 返回值
+
+```
+{
+    "project_name":"MKCE18087 俄罗斯Amylco刮刀备件",
+    "contract_name":"MKCP18087-2 刮刀离心机备件采购",
+    "supplier":"江苏赛德力制药机械制造有限公司"
+}
+```
+
 # 报告详情
 
 - 接口地址：http://localhost/api/check/getReportDetail
@@ -259,3 +426,102 @@ pictures | true | String | 图片Json => ["picture1.jpg", "picture2.jpg"]
 rep_id | true | Int | 报告ID
 comment | true | String | 评论内容
 cuid | true | Int | 用户ID
+
+# 创建草稿箱
+
+- 接口地址：http://localhost/api/check/createDraft
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/createDraft
+
+名称 | 必填 | 类型 | 说明
+--- | --- | --- | ---
+pro_id | true | Int | 项目ID
+ct_id | true | Int | 合同ID
+title | true | String | 草稿箱标题
+uid | true | Int | 用户ID
+technologyinfo | true | Int | JSON：技术要求
+equipmentinfo | true | Int | JSON：随机备件
+
+# 待复验合同
+
+- 接口地址：http://localhost/api/check/recheckContracts
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/recheckContracts
+
+### 返回值
+
+```
+[
+    {
+        "ct_id":"1",
+        "pro_id":"1",
+        "ct_name":"离心泵机械密封采购",
+        "ct_number":"MKCP19085-1",
+        "ct_total":"5",     // 总报告数
+        "ct_review":"0",
+        "count":1   // 待复验报告数
+    }
+]
+```
+
+# 搜索报告
+
+- 接口地址：http://localhost/api/check/search
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/search?key=关键词
+
+### 返回值
+
+```
+[
+    {
+        "id":"1",
+        "pro_id":"1",
+        "ct_id":"1",
+        "supplier_id":"1",
+        "project":"伊朗项目泵机封",
+        "contract":"离心泵机械密封采购",
+        "supplier":"温州市康而达实业有限公司",
+        "title":"123123123",
+        "cuser":"孟祥燕",
+        "cuid":"1",
+        "ctime":"1560741889",
+        "type":"1",
+        "state":"3",
+        "contract_name":"MKCP19085-1 离心泵机械密封采购"
+    }
+]
+```
+
+# 我的报告
+
+- 接口地址：http://localhost/api/check/myReport
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/myReport?uid=1
+
+### 返回值
+
+```
+[
+    {
+        "id":"16",
+        "pro_id":"146",
+        "ct_id":"1366",
+        "supplier_id":"39",
+        "project":"伊朗项目泵机封",
+        "contract":"离心泵机械密封采购",
+        "supplier":"温州市康而达实业有限公司",
+        "title":"123123123",
+        "cuser":"孟祥燕",
+        "cuid":"2",
+        "ctime":"1560741889",
+        "type":"1",
+        "state":"3",
+        "time":"2019年06月17日"
+    }
+]
+```
