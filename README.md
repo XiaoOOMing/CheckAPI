@@ -10,6 +10,7 @@
 - [上传装箱资料](#上传装箱资料)
 - [发送评论](#发送评论)
 - [创建草稿箱](#创建草稿箱)
+- [获取草稿箱](#获取草稿箱)
 - [待复验合同](#待复验合同)
 - [搜索报告](#搜索报告)
 - [我的报告](#我的报告)
@@ -442,6 +443,43 @@ title | true | String | 草稿箱标题
 uid | true | Int | 用户ID
 technologyinfo | true | Int | JSON：技术要求
 equipmentinfo | true | Int | JSON：随机备件
+
+# 获取草稿箱
+
+- 接口地址：http://localhost/api/check/getDrafts
+- 返回格式：JSON
+- 请求方式：get/post
+- 请求示范：http://localhost/api/check/getDrafts?uid=1
+
+名称 | 必填 | 类型 | 说明
+--- | --- | --- | ---
+uid | true | Int | 当前用户ID
+
+### 返回值
+
+```
+
+[
+    {
+        "id":"23",
+        "pro_id":"146",
+        "ct_id":"1366",
+        "supplier_id":"39",
+        "project":"伊朗项目泵机封",
+        "contract":"MKCP19085-1 离心泵机械密封采购",
+        "supplier":"温州市康而达实业有限公司",
+        "title":"草稿箱",
+        "cuser":"孟祥燕",
+        "cuid":"2",
+        "ctime":"2019年06月17日",
+        "type":"0",
+        "state":"0",
+        "equipmentinfo":"[{"title":"法兰","style":12,"content":"型号","pictures":[],"check":false,"content2":"100"},{"title":"罐子","content":"型号","content2":"10","check":false,"pictures":[],"style":12}]",
+        "technologyinfo":"[{"check":true,"content":"","pictures":[],"content2":"","style":3,"title":"真空"}]"
+    }
+]
+
+```
 
 # 待复验合同
 
