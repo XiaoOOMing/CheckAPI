@@ -168,7 +168,7 @@ ct_id | true | Int | 指定合同ID
 title | true | String | 报告标题
 uid | true | Int | 用户ID
 type | true | Int | 0草稿 1报告
-state | true | Int | 0正常报告 1已复验 2旧报告 3待复验
+state | true | Int | 0正常报告 3待复验
 basicinfo | true | Json | 1.基本信息
 facadeinfo | true | Json | 2.外观检查
 randominfo | true | Json | 3.随机资料
